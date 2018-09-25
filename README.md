@@ -1,5 +1,5 @@
 >We welcome contributions from the community. Please feel free to fork this project, there are many committers already and I welcome many more :) Do feel free to review my development branch as we're constantly improving this project and ... just maybe we're already implementing the changes you want! Finally, do feel free to review open issues on the development branch too.
->This is leon and simons's verion
+>This is leon and simons's version
 # cf-SpringBootTrader
 
 Microservice version of the Spring Trader app using spring boot
