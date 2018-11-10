@@ -22,3 +22,7 @@
 	path = user-service
 	url = https://github.com/pivotal-bank-leon-simon/user-service
         branch = development
+[submodule "cf-SpringBootTrader-config"]
+	path = cf-SpringBootTrader-config
+	url = git@github.com:pivotal-bank-leon-simon/cf-SpringBootTrader-config.git
+        branch = development
