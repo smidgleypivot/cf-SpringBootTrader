@@ -1,18 +1,24 @@
 [submodule "quotes-service"]
 	path = quotes-service
 	url = https://github.com/pivotal-bank-leon-simon/quotes-service.git
+        branch = development
 [submodule "accounts-service"]
 	path = accounts-service
 	url = https://github.com/pivotal-bank-leon-simon/accounts-service.git
+	branch = development
 [submodule "portfolio-service"]
 	path = portfolio-service
 	url = https://github.com/pivotal-bank-leon-simon/portfolio-service.git
+        branch = development
 [submodule "web-ui"]
 	path = web-ui
 	url = https://github.com/pivotal-bank-leon-simon/web-ui.git
+        branch = development
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/pivotal-bank-leon-simon/scripts
+        branch = development
 [submodule "user-service"]
 	path = user-service
 	url = https://github.com/pivotal-bank-leon-simon/user-service
+        branch = development
