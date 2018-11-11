@@ -88,7 +88,7 @@ At Pivotal we love education, not just educating ourselves, but also educating o
 7. [Scaling the services](docs/lab_scale.md)
 
 8. Auto Scaling - TODO: use autoscaler service!
-9. [Blue/Green deployments] (docs/lab_bluegreen.md)
+9. [Blue/Green deployments](docs/lab_bluegreen.md)
 10. Monitor workshop - TODO: show how to monitor microservices PCF Metrics.
 #Demos
 
