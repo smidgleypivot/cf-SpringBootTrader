@@ -90,6 +90,7 @@ At Pivotal we love education, not just educating ourselves, but also educating o
 8. Auto Scaling - TODO: use autoscaler service!
 9. [Blue/Green deployments](docs/lab_bluegreen.md)
 10. Monitor workshop - TODO: show how to monitor microservices PCF Metrics.
+
 #Demos
 
 ###1. Deploying to **Pivotal Cloud Foundry**.
