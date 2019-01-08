@@ -41,7 +41,7 @@ Returns a list of companies that have the search parameter in their names or sym
 This application has no dependencies apart from an external service - [markitondemand](http://dev.markitondemand.com/) - to retrieve the real time data.
 
 ## 2. Account Microservice
-This service is a spring boot application responsible for creating and managing user accounts.
+This service is a spring boot application responsible for creating and managing bank accounts.
 
 It stores the accounts in a RDBMS store and uses a spring JPA respository to accomplish this. It provides several REST api calls for other services to consume its services.
 
@@ -59,11 +59,12 @@ The web interface is built using bootstrap and Thymeleaf and uses a Spring contr
 * Account service
 * Quote service
 * Portfolio service
+* User service
 
 ## 5. User Microservice
-This service is a spring boot application providing the user repository and authorization services.
+This service is a spring boot application providing the user services.
 
-It stores the accounts in a RDBMS store and uses a spring JPA respository to accomplish this. It provides several REST api calls for other services to consume its services. 
+It integrates with cloud foundry UAA - https://github.com/cloudfoundry/uaa.
 
 # Deployment
 
@@ -110,13 +111,13 @@ TODO: document a walk through of this demo.
 TODO: document a walk through of this demo.
 
 ###5. Traceability across all services.
-TODO: document a walk through of this demo using Zipkin and Kibana.
+TODO: document a walk through of this demo using Spring Cloud Sleuth and PCF Metrics.
 
 ###6. Continuous Integration/Continuous Delivery.
 TODO: document a walk through of this demo.
 
 ###7. Operations Demo
-TODO: document how to operate/monitor several microservices, using Spring Boot Admin and ELK tile
+TODO: document how to operate/monitor several microservices, using Apps Manager and PCF Metrics
 
 
 #Features
@@ -159,7 +160,7 @@ Here are some ways you can contribute:
 
 ##Submitting an Issue
 
-We use the [GitHub issue tracker](https://github.com/dpinto-pivotal/cf-SpringBootTrader/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include any relevant information. Ideally, a bug report should include a pull request with failing specs, and maybe even a fix!
+We use the [GitHub issue tracker](https://github.com/pivotalbanj/cf-SpringBootTrader/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include any relevant information. Ideally, a bug report should include a pull request with failing specs, and maybe even a fix!
 
 ##Submitting a Pull Request
 
