@@ -1,12 +1,14 @@
+# Pivotal Bank Demo App
+
 >We welcome contributions from the community. Please feel free to fork this project, there are many committers already and I welcome many more :) Do feel free to review my development branch as we're constantly improving this project and ... just maybe we're already implementing the changes you want! Finally, do feel free to review open issues on the development branch too.
->This is leon and simons's version
+
 # cf-SpringBootTrader
 
 Microservice version of the Spring Trader app using spring boot
 
 ![Spring Trader](/docs/springtrader2.png)
 
-#Introduction
+# Introduction
 
 This repository holds a collection of micro services that work together to present a trading application surfaced though a web UI, but more interfaces can be created that re-utilise the microservices.
 
@@ -14,7 +16,7 @@ It was created to support workshops and demonstrations of building and using `mi
 
 The workshops follow a series of exercises, or labs, and you can find links to the guides for these exercises [below](#workshops).
 
-##Table of Contents
+## Table of Contents
 
 1. [Architecture](#architecture)
 2. [Deploying the application](#deployment)
@@ -24,76 +26,71 @@ The workshops follow a series of exercises, or labs, and you can find links to t
 6. [Contributing to the project](#contributing)
 
 
-#Architecture
-The system is composed of 4 microservices. The relationship between the microservices is illustrated below.
+# Architecture
+The system is composed of 5 microservices. The relationship between the microservices is illustrated below.
 
-![architecture](/docs/microservices_relationship.png)
+![architecture](/docs/base-architecture-diagram.png)
 
-##1. Quote Microservice
+## 1. Quote Microservice
 This service is a spring boot application responsible for providing up to date company and ticker/quote information. It does this by providing a REST api with 2 calls:
-* ``/quotes?q={symbol1,symbol2,etc}``
+* ``/v1/quotes?q={symbol1,symbol2,etc}``
 Returns as up to date quote for the given symbol(s).
-* ``/company/{search}``
+* ``/v1/company/{search}``
 Returns a list of companies that have the search parameter in their names or symbols.
 
 This application has no dependencies apart from an external service - [markitondemand](http://dev.markitondemand.com/) - to retrieve the real time data.
 
-##2. Account Microservice
-This service is a spring boot application responsible for creating and managing user accounts.
+## 2. Account Microservice
+This service is a spring boot application responsible for creating and managing bank accounts.
 
 It stores the accounts in a RDBMS store and uses a spring JPA respository to accomplish this. It provides several REST api calls for other services to consume its services.
 
-##3. Portfolio Microservice
+## 3. Portfolio Microservice
 This service is a spring boot application responsible for managing portfolios - these are collections of holdings, which in turn are collection of orders on a particular share.
 
 This service accepts orders (both BUY and SELL) and stores these in a RDBMS store - *it does not have to be the same RDBMS as the Account service, but it can be!* It provides REST api calls for other services to consume its services.
 
 This service is dependent on the Account service above to ensure the logged in user has enough funds to buy stock as well as keeping the account funds up to date. It is also dependent on the Quote service to retrieve up to date quote information and calculate the current value of portfolios.
 
-##4. Web Microservice
+## 4. Web Microservice
 This service is a spring boot application providing the web interface.
 
 The web interface is built using bootstrap and Thymeleaf and uses a Spring controller to delegate calls to the relevant services:
 * Account service
 * Quote service
 * Portfolio service
+* User service
 
-#Deployment
+## 5. User Microservice
+This service is a spring boot application providing the user services.
 
-To deploy the microservices please follow the guides of the [workshop below](#workshops).
+It integrates with cloud foundry UAA - https://github.com/cloudfoundry/uaa.
 
-Each guide includes instructions on how to deploy and run to:
-  - Pivotal Cloud Foundry with [Spring Cloud Services for PCF](https://network.pivotal.io/products/p-spring-cloud-services) installed.
-  - Cloud Foundry without Spring Cloud Services.
-  - [Pivotal Web Services](http://run.pivotal.io)
-  - local machine.
+# Deployment
 
-#Workshops:
+To deploy the microservices manually please follow the guides of the [workshop below](#workshops)
+
+Or if you want to quickly deploy all services to Pivotal Cloud Foundry with [Spring Cloud Services for PCF](https://network.pivotal.io/products/p-spring-cloud-services) follow the [scripted instructions](scripts/README.md)
+
+Alternative, you can run most of the functionality locally, by following the [local instructions](docs/lab_local.md)
+
+# Workshops:
 
 The following guides describe how to setup the environment and deploy the microservices to **Cloud Foundry**.
 
 At Pivotal we love education, not just educating ourselves, but also educating others. As such, these guides follow the *"teaching you how to fish"* principle - Rather than giving you line by line/command by command instructions, we provide guidelines and links to documentation where you can read and learn more.
 
-1. [Setting up the environment] [setup]
-2. [Creating a discovery service] [registry]
-3. [Creating a circuit breaker dashboard] [circuitbreaker]
-4. [creating the configuration service][configserver]
-5. [Pushing the Quote service] [pushquote]
-6. [Pushing all the services] [pushall]
-7. [Scaling the services] [scale]
+1. [Setting up the environment](docs/lab_setup.md)
+2. [Creating a discovery service](docs/lab_registryserver.md)
+3. [Creating a circuit breaker dashboard](docs/lab_circuitbreaker.md)
+4. [Creating the configuration service](docs/lab_configserver.md)
+5. [Pushing the Quote service](docs/lab_pushquote.md)
+6. [Pushing all the services](docs/lab_pushall.md)
+7. [Scaling the services](docs/lab_scale.md)
+
 8. Auto Scaling - TODO: use autoscaler service!
-9. [Blue/Green deployments] [bluegreen]
-10. Monitor workshop - TODO: show how to monitor microservices using springbootadmin, ELK tile and Zipkin.
-
-
-[setup]: docs/lab_setup.md
-[registry]: docs/lab_registryserver.md
-[circuitbreaker]: docs/lab_circuitbreaker.md
-[configserver]: docs/lab_configserver.md
-[pushquote]: docs/lab_pushquote.md
-[pushall]: docs/lab_pushall.md
-[scale]: docs/lab_scale.md
-[bluegreen]: docs/lab_bluegreen.md
+9. [Blue/Green deployments](docs/lab_bluegreen.md)
+10. Monitor workshop - TODO: show how to monitor microservices PCF Metrics.
 
 #Demos
 
@@ -114,13 +111,13 @@ TODO: document a walk through of this demo.
 TODO: document a walk through of this demo.
 
 ###5. Traceability across all services.
-TODO: document a walk through of this demo using Zipkin and Kibana.
+TODO: document a walk through of this demo using Spring Cloud Sleuth and PCF Metrics.
 
 ###6. Continuous Integration/Continuous Delivery.
 TODO: document a walk through of this demo.
 
 ###7. Operations Demo
-TODO: document how to operate/monitor several microservices, using Spring Boot Admin and ELK tile
+TODO: document how to operate/monitor several microservices, using Apps Manager and PCF Metrics
 
 
 #Features
@@ -142,9 +139,7 @@ The roadmap for this project is constantly evolving. Please feel free to reach o
 - **Monitoring/Operations:**
   Show how to monitor a distributed system comprising of multiple microservices.
   This will comprise of:
-   - Spring Boot Admin
-   - ELK tile
-   - Zipkin
+   - PCF Metrics
 - **Stock analysis system:**
    A microservice, or set of microservices, to analyse stock and provide recommendations. Also, to show polyglot persistence as well as more sophisticated data workloads.
 - **Mobile UI:**
@@ -156,8 +151,6 @@ Everyone is encouraged to help improved this project.
 The master branch has the latest stable release. development happens in the development branch (or feature branches that get merged into development branch). So please check if want you to develop is already in the development branch.
 
 Here are some ways you can contribute:
-
-- by using alpha, beta, and prerelease versions (ie from the development branch)
 - by reporting bugs
 - by suggesting new features
 - by writing or editing documentation
@@ -167,7 +160,7 @@ Here are some ways you can contribute:
 
 ##Submitting an Issue
 
-We use the [GitHub issue tracker](https://github.com/dpinto-pivotal/cf-SpringBootTrader/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include any relevant information. Ideally, a bug report should include a pull request with failing specs, and maybe even a fix!
+We use the [GitHub issue tracker](https://github.com/pivotalbanj/cf-SpringBootTrader/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include any relevant information. Ideally, a bug report should include a pull request with failing specs, and maybe even a fix!
 
 ##Submitting a Pull Request
 

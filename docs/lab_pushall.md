@@ -8,7 +8,7 @@ We have already deployed the quote service in the [previous lab](lab_pushquote.m
 ### 2. Accounts service
 The accounts service has a dependency on a RDBMS database.
 
-**Cloud Foundry** provides a marketplace where administrators can enable certain services to be available to developers/operators. These services are called [*Managed services*](http://docs.pivotal.io/pivotalcf/devguide/services/#managed-services), in contrast to [*User-provided services*](http://docs.pivotal.io/pivotalcf/devguide/services/#user-provided-services).
+**Cloud Foundry** provides a marketplace where administrators can enable certain services to be available to developers/operators. These services are called [*Managed services*](http://docs.pivotal.io/pivotalcf/devguide/services/#instances), in contrast to [*User-provided services*](http://docs.pivotal.io/pivotalcf/devguide/services/#user-provided-services).
 
 There are a couple of ways to create a service in **Cloud Foundry**. For this service we will explore using the UI to create the service, but you can also create it using the CLI.
 
@@ -39,6 +39,8 @@ The Web service is the UI front-end and also acts as an API aggregator. As such,
 
 Similarly to above, we will be using the registry service to retrieve information about these microservices.
 
+## 5. User service
+The User service is the provides an abstraction of UAA.
 
 ## 5. Push all the applications.
 

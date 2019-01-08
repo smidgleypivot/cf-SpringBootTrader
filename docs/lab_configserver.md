@@ -1,6 +1,7 @@
 # Creating the Configuration service.
 
-All our microservices will retrieve their configuration from a Configuration service. We will use the Configuration service provided by the [Spring Cloud Services for PCF](https://network.pivotal.io/products/p-spring-cloud-services) if available. There are [notes below](#Deploying without Spring Cloud Services) on how to create this service in case[Spring Cloud Services for PCF](https://network.pivotal.io/products/p-spring-cloud-services) is not available in your cloud or you want to run it [locally](#Running it locally).
+All our microservices will retrieve their configuration from a Configuration service. We will use the Configuration service provided by 
+the [Spring Cloud Services for PCF](https://network.pivotal.io/products/p-spring-cloud-services).
 
 Underneath the covers, this discovery service is implemented using the [Spring Cloud Config](http://cloud.spring.io/spring-cloud-config/).
 
@@ -39,6 +40,6 @@ In order for our microservices to be able to connect to the Registry service, we
 ##Running it locally
 If you want to run all the services locally, you'll need to start the discovery service.
 
-Follow the guidelines to run the Discover service locally  [here](https://github.com/dpinto-pivotal/cf-SpringBootTrader-extras).
+Follow the guidelines to run the Discover service locally  [here](lab_local.md).
 
 You can now move on to [pushing the quote service](lab_pushquote.md)
