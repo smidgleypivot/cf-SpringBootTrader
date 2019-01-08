@@ -40,7 +40,7 @@ The Web service is the UI front-end and also acts as an API aggregator. As such,
 Similarly to above, we will be using the registry service to retrieve information about these microservices.
 
 ## 5. User service
-The User service is the provides a user repository and authorization api
+The User service is the provides an abstraction of UAA.
 
 ## 5. Push all the applications.
 

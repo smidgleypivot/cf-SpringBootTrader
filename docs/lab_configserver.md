@@ -40,6 +40,6 @@ In order for our microservices to be able to connect to the Registry service, we
 ##Running it locally
 If you want to run all the services locally, you'll need to start the discovery service.
 
-Follow the guidelines to run the Discover service locally  [here](https://github.com/dpinto-pivotal/cf-SpringBootTrader-extras).
+Follow the guidelines to run the Discover service locally  [here](lab_local.md).
 
 You can now move on to [pushing the quote service](lab_pushquote.md)

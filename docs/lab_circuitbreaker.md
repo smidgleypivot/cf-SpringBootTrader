@@ -16,6 +16,7 @@ The code to create a circuit breaker involved providing a fallback method. For e
 		List<CompanyInfo> infos = new ArrayList<>();
 		return infos;
 	}
+	
 ```
 It is useful to know when the circuits are open as it may suggest a problem with the dependent services. [Spring Cloud Services for Pivotal Cloud Foundry](https://network.pivotal.io/products/p-spring-cloud-services) provides a centralised dashboard to collect all the statistics from circuit breakers and visualize them in one place.
 
