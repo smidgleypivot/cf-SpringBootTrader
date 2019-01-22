@@ -14,12 +14,6 @@ buildscript {
 		maven { url "http://repo.spring.io/snapshot" }
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
-
-	dependencies {
-		//classpath "io.spring.gradle:dependency-management-plugin:${dependencyPlugin}"
-		//classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-		//classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.7"
-	}
 }
 
 repositories {
@@ -31,13 +25,9 @@ apply plugin: 'java'
 
 subprojects {
   apply plugin: 'java'
-  //apply plugin: 'jacoco'
-	task hello << {println "$projectDir"}
+  apply plugin: 'jacoco'
 }
 
-project(':accounts-service') {
-	task hello2 << {println "$projectDir"}
-}
 
 
 //create a joint code coverage report from subprojects
@@ -51,11 +41,11 @@ task codeCoverageReport(type: JacocoReport) {
 	subprojects.each { sourceSets it.sourceSets.main }
 
 	reports {
-		xml.enabled false
-		html.enabled true
-		html.destination "${buildDir}/reports/jacoco"
 		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+		xml.enabled false
 	}
+
 	jacoco { toolVersion = "0.7.5+" //	reportsDir = file("$buildDir/customJacocoReportDir")
 	}
 }
@@ -65,4 +55,3 @@ codeCoverageReport.dependsOn { subprojects*.test }
 //run full report after test
 test.finalizedBy(codeCoverageReport)
 
-task wrapper(type: Wrapper) { gradleVersion = '2.12' }
