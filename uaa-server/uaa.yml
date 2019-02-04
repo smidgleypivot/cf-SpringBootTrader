@@ -125,3 +125,4 @@ scim:
     portfolio: Allow access to portfolio within Pivotal Bank
   users:
     - user|password|user1@provider.com|First|Last|uaa.user,profile,email,pivotal.bank,trade,account,portfolio
+    - user2|password|user2@provider.com|User|Two|uaa.user,profile,email,pivotal.bank,trade,account,portfolio
