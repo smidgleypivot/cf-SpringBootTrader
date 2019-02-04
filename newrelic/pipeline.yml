@@ -79,7 +79,7 @@ jobs:
             -J web_ui_domain=${web_ui_domain} \
             -J web_ui_oauth_authorization_path=${web_ui_oauth_authorization_path} \
             -J web_ui_oauth2_login_path=${web_ui_oauth2_login_path} \
-            -n -t jmeter/pivotal-bank.jmx -l test.jtl -j jmeter.log \
+            -n -t pivotal-bank.jmx -l test.jtl -j jmeter.log \
             -e -o ../../../report
 
   - put: cf
@@ -102,7 +102,8 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: maven:3-jdk-8
+          repository: maven
+          tag: 3-jdk-8
       inputs:
       -  name: repo
       run:
