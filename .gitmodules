@@ -18,4 +18,4 @@
 	url = https://github.com/pivotal-bank/user-service
 [submodule "cf-SpringBootTrader-config"]
 	path = cf-SpringBootTrader-config
-	url = git@github.com:pivotal-bank/cf-SpringBootTrader-config.git
+	url = https://github.com/dpinto-pivotal/cf-SpringBootTrader-config
