@@ -3,7 +3,7 @@
 	url = https://github.com/pivotal-bank/quotes-service.git
 [submodule "accounts-service"]
 	path = accounts-service
-	url = https://github.com/pivotal-bank/accounts-service.git
+	url = https://github.com/pivotal-bank/accounts-service
 [submodule "portfolio-service"]
 	path = portfolio-service
 	url = https://github.com/pivotal-bank/portfolio-service.git
