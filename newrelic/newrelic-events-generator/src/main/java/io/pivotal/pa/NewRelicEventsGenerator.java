@@ -18,8 +18,7 @@ import java.util.stream.IntStream;
 public class NewRelicEventsGenerator {
 
     //NEW RELIC INSIGHTS URL to insert
-    //final static String insightsAccountID = "2148181";
-    //final static String insertInsightsKey = "jWn33zgslQlNTuVCQZrB_29a9jNCbd0s";
+   
     final static String NRimportInsights = "https://insights-collector.eu01.nr-data.net/v1/accounts/%s/events";
     final static String eventTypeService = "ServiceTickets";
     final static String eventTypeApp = "AppDeploymentEvent";
